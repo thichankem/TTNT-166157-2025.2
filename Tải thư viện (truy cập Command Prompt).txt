@@ -1,0 +1,22 @@
+1. Phân tích dữ liệu & Tính toán khoa học
+NumPy: Tính toán số học, mảng đa chiều.
+Pandas: Xử lý và phân tích dữ liệu bảng (giống như Excel trên Python).
+Matplotlib & Seaborn: Vẽ đồ thị và trực quan hóa dữ liệu.
+
+conda install numpy pandas matplotlib seaborn
+
+2. Học máy (Machine Learning) & AI
+Scikit-learn: Chứa hầu hết các thuật toán học máy cơ bản.
+TensorFlow / PyTorch: Dùng cho học sâu (Deep Learning) và mạng nơ-ron.
+
+conda install scikit-learn
+pip install tensorflow
+pip install torch torchvision torchaudio
+
+3. Các công cụ hỗ trợ Code (Nên có)
+Jupyter Notebook: Môi trường lập trình theo từng ô (cell), cực kỳ trực quan để học Python.
+
+conda install jupyter
+conda install -c conda-forge nb_conda
+
+4. TRONG QUÁ TRÌNH CODE THIẾU THƯ VIỆN GÌ CÓ THỂ TỰ THÊM VÀO (TRA CHATGPT)
