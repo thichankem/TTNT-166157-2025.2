@@ -19,4 +19,6 @@ Jupyter Notebook: Môi trường lập trình theo từng ô (cell), cực kỳ 
 conda install jupyter
 conda install -c conda-forge nb_conda
 
+
+truy cap jupyter notebook
 4. TRONG QUÁ TRÌNH CODE THIẾU THƯ VIỆN GÌ CÓ THỂ TỰ THÊM VÀO (TRA CHATGPT)
