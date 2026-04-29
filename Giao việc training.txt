@@ -1,0 +1,17 @@
+1 Chuẩn bị data (data đã đc xử lý) + test data (đã xong)
+
+2 Training model (chỉnh tham số theo testing) + test model (công việc tuần này)
+
++ import những cái thư viện, data đã được xử lý
+
++ Tách data thành 2 phần là training và testing
+ 
++ Áp dụng thuật toán training cho model
+KNN (kiên, hoàng)
+Naive bayes (khải)
+
++ testing (accuracy=số test đúng / tổng số test)) mục tiêu >90% 
+thực tế có thể 30%
+(xem thêm precision, recall và vẽ đồ thị testing theo accuracy, precision và recall)
+
+deadline t2 tuần sau sẽ báo cáo
