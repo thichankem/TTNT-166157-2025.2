@@ -1,0 +1,146 @@
+.chat-container {
+  display: flex;
+  flex-direction: column;
+  height: 90vh; /* Chiều cao gần hết màn hình */
+  max-width: 800px;
+  margin: 0 auto;
+  background: #2b2c33;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid #4d4d4f;
+}
+
+/* Header của khung chat */
+.chat-header {
+  padding: 15px 20px;
+  background: #343541;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border-bottom: 1px solid #4d4d4f;
+}
+
+.chat-header h2 {
+  font-size: 1.1rem;
+  margin: 0;
+  color: #ececf1;
+}
+
+/* Cửa sổ hiển thị tin nhắn */
+.chat-window {
+  flex: 1;
+  overflow-y: auto;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Căn chỉnh hàng tin nhắn */
+.message-row {
+  display: flex;
+  gap: 12px;
+  max-width: 85%;
+}
+
+.message-row.user {
+  align-self: flex-end;
+  flex-direction: row-reverse;
+}
+
+.message-row.bot {
+  align-self: flex-start;
+}
+
+/* Avatar nhỏ cạnh tin nhắn */
+.avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.bot .avatar { background: #10a37f; color: white; }
+.user .avatar { background: #5436da; color: white; }
+
+/* Bong bóng chat */
+.message-bubble {
+  padding: 12px 16px;
+  border-radius: 18px;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  white-space: pre-line;
+}
+
+.bot .message-bubble {
+  background: #444654;
+  color: #ececf1;
+  border-bottom-left-radius: 4px;
+}
+
+.user .message-bubble {
+  background: #10a37f;
+  color: white;
+  border-bottom-right-radius: 4px;
+}
+
+/* Vùng nhập liệu */
+.chat-input-area {
+  padding: 20px;
+  background: linear-gradient(transparent, #2b2c33 20%);
+}
+
+.input-wrapper {
+  display: flex;
+  background: #40414f;
+  border: 1px solid #565869;
+  border-radius: 12px;
+  padding: 5px 15px;
+  align-items: center;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+.input-wrapper input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  color: white;
+  padding: 12px 0;
+  outline: none;
+  font-size: 1rem;
+}
+
+.send-btn {
+  background: transparent;
+  border: none;
+  color: #10a37f;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  padding: 5px;
+  transition: transform 0.2s;
+}
+
+.send-btn:hover {
+  transform: scale(1.1);
+}
+
+.disclaimer {
+  font-size: 0.75rem;
+  color: #8e8ea0;
+  text-align: center;
+  margin-top: 10px;
+}
+
+/* Thanh cuộn đẹp hơn */
+.chat-window::-webkit-scrollbar {
+  width: 6px;
+}
+.chat-window::-webkit-scrollbar-thumb {
+  background: #4d4d4f;
+  border-radius: 10px;
+}
+
