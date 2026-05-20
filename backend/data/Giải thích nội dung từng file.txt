@@ -1,7 +1,0 @@
-dataset.csv: Dùng tên bệnh làm nhãn mục tiêu (target) để AI học cách phân loại dựa trên các tổ hợp triệu chứng đi kèm tương ứng với từng bệnh cụ thể.
-
-Symptom-severity.csv: File này định nghĩa danh sách các triệu chứng kèm theo một thang điểm từ 1 đến 7 để phản ánh mức độ nghiêm trọng hoặc tầm quan trọng của triệu chứng đó trong việc chẩn đoán.
-
-symptom_Description.csv: Tập tin này cung cấp các đoạn văn bản ngắn giải thích chi tiết khái niệm, nguyên nhân hoặc đặc điểm y khoa của từng loại bệnh sau khi đã được định danh.
-
-symptom_precaution.csv: Đây là bộ từ điển hướng dẫn 4 bước hành động hoặc lời khuyên phòng ngừa thực tế giúp bệnh nhân biết cách xử lý bước đầu đối với từng căn bệnh cụ thể.

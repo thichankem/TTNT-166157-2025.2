@@ -21,15 +21,27 @@ async def chat(payload: dict):
         raise HTTPException(status_code=400, detail="Dữ liệu đầu vào không hợp lệ")
 
     symptoms = process_clinical_text(message)
+
+    if not symptoms:
+        return {
+            "status": "success",
+            "reply": (
+                "Mình chưa nhận ra triệu chứng cụ thể nào trong mô tả của bạn. "
+                "Bạn có thể mô tả chi tiết hơn, ví dụ: sốt, đau đầu, ho khan, mệt mỏi…?"
+            ),
+            "prediction": None,
+            "detected_symptoms": [],
+        }
+
     input_vector = convert_to_matrix(symptoms)
     prediction = predict_from_vector(input_vector)
 
-    top_3 = ", ".join(
-        [f"{item['disease']} ({item['probability']*100:.1f}%)" for item in prediction["top_3"]]
-    )
+    disease_name = prediction["prediction"]
     reply_text = (
-        f"Dựa theo những gì bạn mô tả, mình thấy khả năng cao nhất là: {prediction['prediction']}. \n"
-        f"Top 3 khả năng: {top_3}."
+        f"Dựa trên {len(symptoms)} triệu chứng bạn mô tả, "
+        f"tôi chẩn đoán bạn có thể đang mắc: **{disease_name}**.\n\n"
+        f"Lưu ý: Đây chỉ là dự đoán từ AI, không thay thế cho ý kiến bác sĩ. "
+        f"Hãy đến cơ sở y tế để được khám và chẩn đoán chính xác."
     )
 
     return {
