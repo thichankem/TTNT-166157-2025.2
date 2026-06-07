@@ -316,11 +316,21 @@ Response:
 ```powershell
 cd backend
 python -m uvicorn main:app --host 0.0.0.0 --port 8000
+
+
+
+cd "C:\Users\ADMIN\OneDrive\Máy tính\TTNT-166157-2025.2\backend"
+& "C:\Users\ADMIN\anaconda3\python.exe" -m uvicorn main:app --port 8000
 ```
 
 **Terminal 2 - Frontend:**
 ```powershell
 cd frontend
+npm run dev
+
+
+
+cd "C:\Users\ADMIN\OneDrive\Máy tính\TTNT-166157-2025.2\frontend"
 npm run dev
 ```
 
