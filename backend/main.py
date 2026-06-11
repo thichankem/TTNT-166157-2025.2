@@ -1,59 +1,65 @@
-from fastapi import FastAPI, HTTPException
+"""
+main.py
+-------
+API backend cho chatbot chẩn đoán bệnh (FastAPI).
+Chạy:  python main.py   ->  mở http://127.0.0.1:8000
+"""
+
+from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 import uvicorn
 
-from services.transform_input import process_clinical_text, convert_to_matrix
-from services.chatbot_engine import predict_from_vector
+from services.transform_input import tim_trieu_chung, tao_vector
+from services.chatbot_engine import du_doan
 
 app = FastAPI()
 
+# Cho phép frontend (chạy ở cổng khác) gọi được API
 app.add_middleware(
     CORSMiddleware,
-    allow_origin_regex=r"https?://(localhost|127\.0\.0\.1)(:\d+)?",
+    allow_origins=["*"],
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
+
 @app.get("/")
-async def root():
-    return {"status": "ok", "message": "AI Medical backend is running"}
+def root():
+    return {"status": "ok", "message": "Backend chẩn đoán bệnh đang chạy"}
+
 
 @app.post("/api/chat")
-async def chat(payload: dict):
-    message = payload.get("message")
-    if not message or not isinstance(message, str):
-        raise HTTPException(status_code=400, detail="Dữ liệu đầu vào không hợp lệ")
+def chat(payload: dict):
+    cau_mo_ta = payload.get("message", "")
 
-    symptoms = process_clinical_text(message)
+    # Bước 1: tìm triệu chứng trong câu người dùng nhập
+    trieu_chung = tim_trieu_chung(cau_mo_ta)
 
-    if not symptoms:
+    # Bước 2: nếu không tìm thấy triệu chứng nào thì hỏi lại
+    if not trieu_chung:
         return {
-            "status": "success",
-            "reply": (
-                "Mình chưa nhận ra triệu chứng cụ thể nào trong mô tả của bạn. "
-                "Bạn có thể mô tả chi tiết hơn, ví dụ: sốt, đau đầu, ho khan, mệt mỏi…?"
-            ),
-            "prediction": None,
-            "detected_symptoms": [],
+            "reply": "Mình chưa nhận ra triệu chứng nào. Bạn mô tả rõ hơn nhé "
+                     "(ví dụ: sốt, ho, đau đầu, mệt mỏi...).",
+            "trieu_chung": [],
         }
 
-    input_vector = convert_to_matrix(symptoms)
-    prediction = predict_from_vector(input_vector)
+    # Bước 3: đổi triệu chứng thành vector số rồi đưa vào model dự đoán
+    vector = tao_vector(trieu_chung)
+    benh = du_doan(vector)
 
-    disease_name = prediction["prediction"]
-    reply_text = (
-        f"Dựa trên {len(symptoms)} triệu chứng bạn mô tả, "
-        f"tôi chẩn đoán bạn có thể đang mắc: **{disease_name}**.\n\n"
-        f"Lưu ý: Đây chỉ là dự đoán từ AI, không thay thế cho ý kiến bác sĩ. "
-        f"Hãy đến cơ sở y tế để được khám và chẩn đoán chính xác."
+    # Bước 4: tạo câu trả lời gửi về frontend
+    reply = (
+        f"Dựa trên {len(trieu_chung)} triệu chứng bạn mô tả, "
+        f"bạn có thể đang mắc: **{benh}**.\n\n"
+        f"Lưu ý: đây chỉ là dự đoán của AI, hãy đi khám bác sĩ để chắc chắn."
     )
 
     return {
-        "status": "success",
-        "reply": reply_text,
-        "prediction": prediction,
-        "detected_symptoms": symptoms,
+        "reply": reply,
+        "benh": benh,
+        "trieu_chung": trieu_chung,
     }
 
+
 if __name__ == "__main__":
-    uvicorn.run(app, host="0.0.0.0", port=8000)
+    uvicorn.run(app, host="127.0.0.1", port=8000)
