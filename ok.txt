@@ -1,0 +1,12 @@
+| 1 | Mấy hôm nay tôi bị sốt cao, đau đầu, đau họng, đau nhức cơ, ớn lạnh và mệt mỏi | **Cảm cúm** |
+| 2 | Tôi bị sốt cao, đau sau hốc mắt, buồn nôn và phát ban | **Sốt xuất huyết** |
+| 3 | Tôi bị sốt, ho khan, đau họng, khó thở và cứng đờ | **COVID-19** |
+| 4 | Tôi bị khó thở, thở khò khè, ho và đau ngực | **Hen suyễn** |
+| 5 | Tôi bị đau ngực, đau lan cánh tay, khó thở, hồi hộp, buồn nôn và đổ mồ hôi lạnh | **Nhồi máu cơ tim** |
+| 6 | Tôi bị đau bụng, buồn nôn, tiêu chảy, sốt và mất nước | **Ngộ độc thực phẩm** |
+| 7 | Tôi bị khát nước nhiều, tiểu nhiều, đói nhiều, sụt cân, mệt mỏi và mờ mắt | **Tiểu đường** |
+| 8 | Tôi bị méo miệng, yếu liệt tay chân và nói khó | **Đột quỵ** |
+| 9 | Tôi bị sưng tuyến mang tai, sốt, đau khi nhai và mệt mỏi | **Quai bị** |
+| 10 | Tôi bị vàng da, chán ăn, đau hạ sườn phải, buồn nôn, ớn lạnh và mệt mỏi | **Viêm gan** |
+| 11 | Tôi bị đỏ khớp, đau khớp và nóng khớp | **Gout** *(bonus)* |
+| 12 | Tôi bị run tay, chậm chạp, cứng đờ, đi lại khó và mất thăng bằng | **Parkinson** *(bonus)* |
