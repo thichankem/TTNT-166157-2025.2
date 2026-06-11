@@ -43,6 +43,22 @@ def chat(payload: dict):
             "trieu_chung": [],
         }
 
+    # Bước 2b: cần tối thiểu 3 triệu chứng thì dự đoán mới đáng tin.
+    # Ít hơn -> hỏi thêm thay vì đoán bừa (model rất kém khi quá ít triệu chứng).
+    SO_TRIEU_CHUNG_TOI_THIEU = 3
+    if len(trieu_chung) < SO_TRIEU_CHUNG_TOI_THIEU:
+        con_thieu = SO_TRIEU_CHUNG_TOI_THIEU - len(trieu_chung)
+        return {
+            "reply": (
+                f"Mình mới nhận ra {len(trieu_chung)} triệu chứng: "
+                f"**{', '.join(trieu_chung)}**.\n\n"
+                f"Để dự đoán chính xác, mình cần ít nhất {SO_TRIEU_CHUNG_TOI_THIEU} "
+                f"triệu chứng. Bạn mô tả thêm {con_thieu} triệu chứng nữa nhé "
+                f"(ví dụ: sốt, ho, đau đầu, mệt mỏi, đau họng, buồn nôn...)."
+            ),
+            "trieu_chung": trieu_chung,
+        }
+
     # Bước 3: đổi triệu chứng thành vector số rồi đưa vào model dự đoán
     vector = tao_vector(trieu_chung)
     benh = du_doan(vector)
